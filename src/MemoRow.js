@@ -5,7 +5,27 @@ const Memos = [
   { id: 4, title: "メモ4", content: "メモ4内容" },
 ];
 
-export default function MemoRow() {
+function MemoRow() {
   const memoTitle = Memos.map((memo) => <li key={memo.id}>{memo.title}</li>);
   return <ul>{memoTitle}</ul>;
+}
+
+function AddMemo() {
+  function handleClick() {
+    alert("You clicked me!");
+  }
+  return (
+    <div style={{ cursor: "pointer" }} onClick={handleClick}>
+      ＋
+    </div>
+  );
+}
+
+export default function MemoTable() {
+  return (
+    <>
+      <MemoRow />
+      <AddMemo />
+    </>
+  );
 }

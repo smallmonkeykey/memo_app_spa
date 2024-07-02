@@ -1,10 +1,10 @@
 import React from "react";
-import MemoRow from "./MemoRow.js";
+import MemoTable from "./MemoRow.js";
 
 function App() {
   return (
     <div>
-      <MemoRow />
+      <MemoTable />
     </div>
   );
 }
