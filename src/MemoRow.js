@@ -7,10 +7,11 @@ function MemoRow({ memoList }) {
   return <ul>{memoTitle}</ul>;
 }
 
-function AddMemo() {
+function AddMemoButton({ clickedButton, setClickedButton }) {
   function handleClick() {
-    alert("You clicked me!");
+    setClickedButton(!clickedButton);
   }
+
   return (
     <div style={{ cursor: "pointer" }} onClick={handleClick}>
       ＋
@@ -18,7 +19,7 @@ function AddMemo() {
   );
 }
 
-function InputMemo({ memoList, setMemoList }) {
+function InputMemo({ memoList, setMemoList, clickedButton, setClickedButton }) {
   const inputTextRef = useRef();
 
   const handleAddMemo = (e) => {
@@ -33,18 +34,20 @@ function InputMemo({ memoList, setMemoList }) {
     inputTextRef.current.value = "";
 
     setMemoList([...memoList, newMemo]);
+    setClickedButton(false);
   };
 
-  return (
-    <form>
-      <textarea rows="20" cols="50" ref={inputTextRef}></textarea>
-      <button type="submit" onClick={handleAddMemo}>
-        追加
-      </button>
-    </form>
-  );
+  if (clickedButton) {
+    return (
+      <form>
+        <textarea rows="20" cols="50" ref={inputTextRef}></textarea>
+        <button type="submit" onClick={handleAddMemo}>
+          追加
+        </button>
+      </form>
+    );
+  }
 }
-
 
 export default function MemoTable() {
   const getAllMemos = () => {
@@ -59,12 +62,21 @@ export default function MemoTable() {
   };
 
   const [memoList, setMemoList] = useState(getAllMemos());
+  const [clickedButton, setClickedButton] = useState(false);
 
   return (
     <>
       <MemoRow memoList={memoList} />
-      <AddMemo />
-      <InputMemo memoList={memoList} setMemoList={setMemoList} />
+      <AddMemoButton
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
+      />
+      <InputMemo
+        memoList={memoList}
+        setMemoList={setMemoList}
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
+      />
     </>
   );
 }
