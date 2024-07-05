@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+import MemoEdit from "./MemoEdit";
 
-function MemoRow({ memoList }) {
-  const memoTitle = memoList.map((memo) => <li key={memo.id}>{memo.title}</li>);
+function MemoRow({ memoList, setSelectedMemoId, clickTitle, setClickTitle }) {
+  function handleClickTitle(memo) {
+    setSelectedMemoId(memo.id);
+    setClickTitle(!clickTitle);
+  }
+
+  const memoTitle = memoList.map((memo) => (
+    <li key={memo.id} onClick={() => handleClickTitle(memo)}>
+      {memo.title}
+    </li>
+  ));
   return <ul>{memoTitle}</ul>;
 }
 
@@ -63,10 +73,17 @@ export default function MemoTable() {
 
   const [memoList, setMemoList] = useState(getAllMemos());
   const [clickedButton, setClickedButton] = useState(false);
+  const [selectedMemoId, setSelectedMemoId] = useState();
+  const [clickTitle, setClickTitle] = useState(false);
 
   return (
     <>
-      <MemoRow memoList={memoList} />
+      <MemoRow
+        memoList={memoList}
+        setSelectedMemoId={setSelectedMemoId}
+        clickTitle={clickTitle}
+        setClickTitle={setClickTitle}
+      />
       <AddMemoButton
         clickedButton={clickedButton}
         setClickedButton={setClickedButton}
@@ -77,6 +94,7 @@ export default function MemoTable() {
         clickedButton={clickedButton}
         setClickedButton={setClickedButton}
       />
+      <MemoEdit clickTitle={clickTitle} selectedMemoId={selectedMemoId} />
     </>
   );
 }

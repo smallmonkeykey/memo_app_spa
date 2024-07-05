@@ -1,5 +1,5 @@
 import React from "react";
-import MemoTable from "./MemoRow.js";
+import MemoTable from "./components/MemoRow.js";
 
 function App() {
   return (
