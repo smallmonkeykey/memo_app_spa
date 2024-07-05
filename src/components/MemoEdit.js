@@ -6,8 +6,11 @@ export default function MemoEdit({ clickTitle, selectedMemoId }) {
   const inputTextRef = useRef();
 
   function handleClickEdit() {
-    console.log(inputTextRef.current.value);
     localStorage.setItem(selectedMemoId, inputTextRef.current.value);
+  }
+
+  function handleClickDelete() {
+    localStorage.removeItem(selectedMemoId);
   }
 
   if (clickTitle) {
@@ -22,7 +25,9 @@ export default function MemoEdit({ clickTitle, selectedMemoId }) {
         <button type="submit" onClick={handleClickEdit}>
           編集
         </button>
-        <button type="submit">削除</button>
+        <button type="submit" onClick={handleClickDelete}>
+          削除
+        </button>
       </form>
     );
   }
