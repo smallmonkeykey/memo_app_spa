@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import MemoEdit from "./MemoEdit";
 
-function MemoRow({ memoList, setSelectedMemoId, clickTitle, setClickTitle }) {
+function MemoRow({ memoList, selectedMemoId,setSelectedMemoId, clickTitle, setClickTitle }) {
   function handleClickTitle(memo) {
     setSelectedMemoId(memo.id);
     setClickTitle(!clickTitle);
@@ -15,7 +15,10 @@ function MemoRow({ memoList, setSelectedMemoId, clickTitle, setClickTitle }) {
     </li>
   ));
   return <ul>{memoTitle}</ul>;
+
 }
+
+
 
 function AddMemoButton({ clickedButton, setClickedButton }) {
   function handleClick() {
@@ -80,6 +83,7 @@ export default function MemoTable() {
     <>
       <MemoRow
         memoList={memoList}
+        selectedMemoId={selectedMemoId}
         setSelectedMemoId={setSelectedMemoId}
         clickTitle={clickTitle}
         setClickTitle={setClickTitle}
