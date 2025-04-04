@@ -1,6 +1,5 @@
 import React from "react";
-// import MemoTable from "./components/MemoRow.js";
-import Memo from "./components/MemoAdd.js";
+import Memo from "./components/Memo.js";
 
 function App() {
   return (
