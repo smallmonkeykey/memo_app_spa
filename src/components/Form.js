@@ -1,10 +1,11 @@
-import { useState } from "react";
-
-export default function Form({ memos, setMemos, selectedId, setEditing }) {
-  const selectedMemo = memos.find((memo) => memo.id === selectedId);
-  console.log(selectedMemo);
-  const [text, setText] = useState(selectedMemo.content);
-
+export default function Form({
+  memos,
+  setMemos,
+  selectedId,
+  setEditing,
+  text,
+  setText,
+}) {
   function handleUpdate() {
     const updateMemos = memos.map((memo) =>
       memo.id === selectedId ? { ...memo, content: text } : memo,

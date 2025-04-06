@@ -4,10 +4,13 @@ export default function MemoListWithAdd({
   memos,
   setMemos,
   setEditing,
+  selectedId,
   setSelectedId,
+  setText,
 }) {
   function handleClickTitle(memo) {
     setSelectedId(memo.id);
+    setText(memo.content);
     setEditing(true);
   }
 
@@ -15,6 +18,7 @@ export default function MemoListWithAdd({
     setEditing(true);
     const newMemo = { id: uuidv4(), content: "" };
     localStorage.setItem(newMemo.id, newMemo.content);
+    setText(newMemo.content);
     setSelectedId(newMemo.id);
     setMemos([...memos, newMemo]);
   }

@@ -16,6 +16,7 @@ export default function Memo() {
   const [memos, setMemos] = useState(getMemos());
   const [isEditing, setEditing] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [text, setText] = useState("");
 
   return (
     <div style={{ display: "flex", gap: "100px" }}>
@@ -23,7 +24,9 @@ export default function Memo() {
         memos={memos}
         setMemos={setMemos}
         setEditing={setEditing}
+        selectedId={selectedId}
         setSelectedId={setSelectedId}
+        setText={setText}
       />
       {isEditing && (
         <Form
@@ -31,6 +34,8 @@ export default function Memo() {
           setMemos={setMemos}
           selectedId={selectedId}
           setEditing={setEditing}
+          text={text}
+          setText={setText}
         />
       )}
     </div>
