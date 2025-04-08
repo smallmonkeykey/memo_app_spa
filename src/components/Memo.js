@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MemoListWithAdd from "./MemoListWithAdd";
 import Form from "./Form";
+import "./Memo.css";
 
 export default function Memo() {
   const getMemos = () => {
@@ -19,7 +20,7 @@ export default function Memo() {
   const [text, setText] = useState("");
 
   return (
-    <div style={{ display: "flex", gap: "100px" }}>
+    <div className="memo_wrap">
       <MemoListWithAdd
         memos={memos}
         setMemos={setMemos}

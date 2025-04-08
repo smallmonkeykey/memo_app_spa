@@ -1,3 +1,5 @@
+import "./Form.css";
+
 export default function Form({
   memos,
   setMemos,
@@ -34,11 +36,11 @@ export default function Form({
           placeholder={text}
         />
       </>
-      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
-        <button style={{ flex: 1 }} onClick={handleUpdate}>
+      <div className="form_button-group">
+        <button className="form_button" onClick={handleUpdate}>
           更新
         </button>
-        <button style={{ flex: 1 }} onClick={handleDelete}>
+        <button className="form_button" onClick={handleDelete}>
           削除
         </button>
       </div>

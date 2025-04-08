@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import "./MemoListWithAdd.css";
 
 export default function MemoListWithAdd({
   memos,
@@ -24,19 +25,11 @@ export default function MemoListWithAdd({
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+    <div className="memo_section">
+      <ul className="memo_list">
         {memos.map((memo) => (
           <li key={memo.id}>
-            <div
-              style={{
-                cursor: "pointer",
-                textDecoration: "underline",
-                color: "blue",
-                margin: 5,
-              }}
-              onClick={() => handleClickTitle(memo)}
-            >
+            <div className="memo_title" onClick={() => handleClickTitle(memo)}>
               {memo.content.split("\n")[0]}
             </div>
           </li>
