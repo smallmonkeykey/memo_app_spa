@@ -18,10 +18,11 @@ export default function MemoListWithAdd({
   function handleAdd() {
     setEditing(true);
     const newMemo = { id: uuidv4(), content: "" };
-    localStorage.setItem(newMemo.id, newMemo.content);
+    const updateMemos = [...memos, newMemo]
+    localStorage.setItem("memos",  JSON.stringify(updateMemos));
     setText(newMemo.content);
     setSelectedId(newMemo.id);
-    setMemos([...memos, newMemo]);
+    setMemos(updateMemos);
   }
 
   return (

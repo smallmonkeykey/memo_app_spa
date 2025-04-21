@@ -13,7 +13,7 @@ export default function Form({
       memo.id === selectedId ? { ...memo, content: text } : memo,
     );
     setMemos(updateMemos);
-    localStorage.setItem(selectedId, text);
+    localStorage.setItem("memos", JSON.stringify(updateMemos));
     setText("");
     setEditing(false);
   }
@@ -21,7 +21,7 @@ export default function Form({
   function handleDelete() {
     const deletedMemos = memos.filter((memo) => memo.id !== selectedId);
     setMemos(deletedMemos);
-    localStorage.removeItem(selectedId);
+    localStorage.setItem("memos", JSON.stringify(deletedMemos));
     setEditing(false);
   }
 

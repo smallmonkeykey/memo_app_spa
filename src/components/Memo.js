@@ -5,13 +5,8 @@ import "./Memo.css";
 
 export default function Memo() {
   const getMemos = () => {
-    const memos = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const value = localStorage.getItem(key);
-      memos.push({ id: key, content: value });
-    }
-    return memos;
+    const memos = JSON.parse(localStorage.getItem("memos") || "[]");
+    return memos
   };
 
   const [memos, setMemos] = useState(getMemos());
