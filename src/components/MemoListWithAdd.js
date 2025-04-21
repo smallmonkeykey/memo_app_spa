@@ -14,6 +14,8 @@ export default function MemoListWithAdd({
 
   function handleAdd() {
     setEditing(true);
+    setSelectedId(null);
+    setText("");
   }
 
   return (
