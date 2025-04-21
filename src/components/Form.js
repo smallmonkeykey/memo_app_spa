@@ -10,6 +10,14 @@ export default function Form({
   text,
   setText,
 }) {
+  function saveAndReset(updateMemos) {
+    setMemos(updateMemos);
+    localStorage.setItem("memos", JSON.stringify(updateMemos));
+    setText("");
+    setSelectedId(null);
+    setEditing(false);
+  }
+
   function handleUpdate() {
     let updateMemos;
     if (selectedId === null) {
@@ -20,20 +28,12 @@ export default function Form({
         memo.id === selectedId ? { ...memo, content: text } : memo,
       );
     }
-    setMemos(updateMemos);
-    localStorage.setItem("memos", JSON.stringify(updateMemos));
-    setText("");
-    setSelectedId(null);
-    setEditing(false);
+    saveAndReset(updateMemos);
   }
 
   function handleDelete() {
     const deletedMemos = memos.filter((memo) => memo.id !== selectedId);
-    setMemos(deletedMemos);
-    localStorage.setItem("memos", JSON.stringify(deletedMemos));
-    setText("");
-    setSelectedId(null);
-    setEditing(false);
+    saveAndReset(deletedMemos);
   }
 
   return (
