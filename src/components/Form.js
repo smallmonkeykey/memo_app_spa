@@ -1,4 +1,5 @@
 import "./Form.css";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Form({
   memos,
@@ -9,9 +10,15 @@ export default function Form({
   setText,
 }) {
   function handleUpdate() {
-    const updateMemos = memos.map((memo) =>
-      memo.id === selectedId ? { ...memo, content: text } : memo,
-    );
+    let updateMemos;
+    if (selectedId === null) {
+      const newMemo = { id: uuidv4(), content: text };
+      updateMemos = [...memos, newMemo];
+    } else {
+      updateMemos = memos.map((memo) =>
+        memo.id === selectedId ? { ...memo, content: text } : memo,
+      );
+    }
     setMemos(updateMemos);
     localStorage.setItem("memos", JSON.stringify(updateMemos));
     setText("");

@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import "./MemoListWithAdd.css";
 
 export default function MemoListWithAdd({
@@ -17,12 +16,6 @@ export default function MemoListWithAdd({
 
   function handleAdd() {
     setEditing(true);
-    const newMemo = { id: uuidv4(), content: "" };
-    const updateMemos = [...memos, newMemo]
-    localStorage.setItem("memos",  JSON.stringify(updateMemos));
-    setText(newMemo.content);
-    setSelectedId(newMemo.id);
-    setMemos(updateMemos);
   }
 
   return (

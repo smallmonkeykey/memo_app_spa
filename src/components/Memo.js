@@ -6,7 +6,7 @@ import "./Memo.css";
 export default function Memo() {
   const getMemos = () => {
     const memos = JSON.parse(localStorage.getItem("memos") || "[]");
-    return memos
+    return memos;
   };
 
   const [memos, setMemos] = useState(getMemos());
