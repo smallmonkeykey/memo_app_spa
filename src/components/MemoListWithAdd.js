@@ -2,9 +2,7 @@ import "./MemoListWithAdd.css";
 
 export default function MemoListWithAdd({
   memos,
-  setMemos,
   setEditing,
-  selectedId,
   setSelectedId,
   setText,
 }) {

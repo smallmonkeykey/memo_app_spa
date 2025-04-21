@@ -18,9 +18,7 @@ export default function Memo() {
     <div className="memo_wrap">
       <MemoListWithAdd
         memos={memos}
-        setMemos={setMemos}
         setEditing={setEditing}
-        selectedId={selectedId}
         setSelectedId={setSelectedId}
         setText={setText}
       />
@@ -29,6 +27,7 @@ export default function Memo() {
           memos={memos}
           setMemos={setMemos}
           selectedId={selectedId}
+          setSelectedId={setSelectedId}
           setEditing={setEditing}
           text={text}
           setText={setText}

@@ -5,6 +5,7 @@ export default function Form({
   memos,
   setMemos,
   selectedId,
+  setSelectedId,
   setEditing,
   text,
   setText,
@@ -22,6 +23,7 @@ export default function Form({
     setMemos(updateMemos);
     localStorage.setItem("memos", JSON.stringify(updateMemos));
     setText("");
+    setSelectedId(null);
     setEditing(false);
   }
 
@@ -29,6 +31,8 @@ export default function Form({
     const deletedMemos = memos.filter((memo) => memo.id !== selectedId);
     setMemos(deletedMemos);
     localStorage.setItem("memos", JSON.stringify(deletedMemos));
+    setText("");
+    setSelectedId(null);
     setEditing(false);
   }
 
