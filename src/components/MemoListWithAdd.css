@@ -1,0 +1,16 @@
+.memo_section {
+  display: flex;
+  flex-direction: column;
+}
+
+.memo_list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.memo_title {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+  margin: 5px;
+}
