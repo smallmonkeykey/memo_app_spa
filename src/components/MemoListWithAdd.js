@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { LoginContext } from "./Context.js";
 import "./MemoListWithAdd.css";
 
 export default function MemoListWithAdd({
@@ -6,6 +8,8 @@ export default function MemoListWithAdd({
   setSelectedId,
   setText,
 }) {
+  const { isLoggedIn } = useContext(LoginContext);
+
   function handleClickTitle(memo) {
     setSelectedId(memo.id);
     setText(memo.content);
@@ -29,7 +33,7 @@ export default function MemoListWithAdd({
           </li>
         ))}
       </ul>
-      <div onClick={handleAdd}>＋</div>
+      {isLoggedIn && <div onClick={handleAdd}>＋</div>}
     </div>
   );
 }
