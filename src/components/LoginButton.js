@@ -1,13 +1,8 @@
-import { useContext } from "react";
-import { LoginContext } from "./Context.js";
+import { useLogin } from "./login-context.js";
 import "./LoginButton.css";
 
 export default function LoginButton() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
-
-  const handleButtonClick = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  const { isLoggedIn, handleButtonClick } = useLogin();
 
   return (
     <button onClick={handleButtonClick}>

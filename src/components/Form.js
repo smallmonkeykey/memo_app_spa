@@ -1,7 +1,6 @@
 import "./Form.css";
 import { v4 as uuidv4 } from "uuid";
-import { useContext } from "react";
-import { LoginContext } from "./Context.js";
+import { useLogin } from "./login-context.js";
 
 export default function Form({
   memos,
@@ -12,7 +11,7 @@ export default function Form({
   text,
   setText,
 }) {
-  const { isLoggedIn } = useContext(LoginContext);
+  const { isLoggedIn } = useLogin();
 
   function saveAndReset(updateMemos) {
     setMemos(updateMemos);

@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { LoginContext } from "./Context.js";
+import { useLogin } from "./login-context.js";
 import "./MemoListWithAdd.css";
 
 export default function MemoListWithAdd({
@@ -8,7 +7,7 @@ export default function MemoListWithAdd({
   setSelectedId,
   setText,
 }) {
-  const { isLoggedIn } = useContext(LoginContext);
+  const { isLoggedIn } = useLogin();
 
   function handleClickTitle(memo) {
     setSelectedId(memo.id);

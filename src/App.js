@@ -1,16 +1,13 @@
 import React from "react";
 import Memo from "./components/Memo.js";
-import { useState } from "react";
-import { LoginContext } from "./components/Context.js";
+import { LoginProvider } from "./components/login-context.js";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <div>
-      <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      <LoginProvider>
         <Memo />
-      </LoginContext.Provider>
+      </LoginProvider>
     </div>
   );
 }
