@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MemoListWithAdd from "./MemoListWithAdd";
 import Form from "./Form";
+import LoginButton from "./LoginButton";
 import "./Memo.css";
 
 export default function Memo() {
@@ -15,24 +16,29 @@ export default function Memo() {
   const [text, setText] = useState("");
 
   return (
-    <div className="memo_wrap">
-      <MemoListWithAdd
-        memos={memos}
-        setEditing={setEditing}
-        setSelectedId={setSelectedId}
-        setText={setText}
-      />
-      {isEditing && (
-        <Form
+    <>
+      <div className="memo_header">
+        <LoginButton />
+      </div>
+      <div className="memo_wrap">
+        <MemoListWithAdd
           memos={memos}
-          setMemos={setMemos}
-          selectedId={selectedId}
-          setSelectedId={setSelectedId}
           setEditing={setEditing}
-          text={text}
+          setSelectedId={setSelectedId}
           setText={setText}
         />
-      )}
-    </div>
+        {isEditing && (
+          <Form
+            memos={memos}
+            setMemos={setMemos}
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+            setEditing={setEditing}
+            text={text}
+            setText={setText}
+          />
+        )}
+      </div>
+    </>
   );
 }

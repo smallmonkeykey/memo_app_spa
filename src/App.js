@@ -1,10 +1,13 @@
 import React from "react";
 import Memo from "./components/Memo.js";
+import { LoginProvider } from "./hooks/useLogin.js";
 
 function App() {
   return (
     <div>
-      <Memo />
+      <LoginProvider>
+        <Memo />
+      </LoginProvider>
     </div>
   );
 }

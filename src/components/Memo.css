@@ -1,3 +1,9 @@
+.memo_header {
+  width: 500px;
+  text-align: right;
+  margin: 20px;
+}
+
 .memo_wrap {
   display: flex;
   gap: 100px;

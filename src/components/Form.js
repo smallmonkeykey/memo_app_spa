@@ -1,5 +1,6 @@
 import "./Form.css";
 import { v4 as uuidv4 } from "uuid";
+import { useLogin } from "../hooks/useLogin.js";
 
 export default function Form({
   memos,
@@ -10,6 +11,8 @@ export default function Form({
   text,
   setText,
 }) {
+  const { isLoggedIn } = useLogin();
+
   function saveAndReset(updateMemos) {
     setMemos(updateMemos);
     localStorage.setItem("memos", JSON.stringify(updateMemos));
@@ -47,14 +50,16 @@ export default function Form({
           placeholder={text}
         />
       </>
-      <div className="form_button-group">
-        <button className="form_button" onClick={handleUpdate}>
-          更新
-        </button>
-        <button className="form_button" onClick={handleDelete}>
-          削除
-        </button>
-      </div>
+      {isLoggedIn && (
+        <div className="form_button-group">
+          <button className="form_button" onClick={handleUpdate}>
+            更新
+          </button>
+          <button className="form_button" onClick={handleDelete}>
+            削除
+          </button>
+        </div>
+      )}
     </div>
   );
 }
