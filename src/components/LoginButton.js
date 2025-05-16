@@ -1,5 +1,4 @@
-import { useLogin } from "./login-context.js";
-import "./LoginButton.css";
+import { useLogin } from "../hooks/useLogin.js";
 
 export default function LoginButton() {
   const { isLoggedIn, handleButtonClick } = useLogin();
