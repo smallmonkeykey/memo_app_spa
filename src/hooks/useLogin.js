@@ -5,12 +5,12 @@ const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleButtonClick = () => {
+  const toggleIsLoggedIn = () => {
     setIsLoggedIn(!isLoggedIn);
   };
 
   return (
-    <LoginContext.Provider value={{ isLoggedIn, handleButtonClick }}>
+    <LoginContext.Provider value={{ isLoggedIn, toggleIsLoggedIn }}>
       {children}
     </LoginContext.Provider>
   );
